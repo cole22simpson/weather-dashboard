@@ -22,18 +22,19 @@ ul {
     margin-left: 15px;
 }
 
-.form-container {
+.input-container {
     margin: 10px auto;
 }
 
 .search-button {
-    margin: 10px auto;
+    margin: 5px auto;
     padding-bottom: 10px;
     border-bottom: solid 1px black;
+    width: 100%;
 }
 
 .recents {
-    padding: 0;
+    padding: 5px 0;
     margin: 0;
 }
 

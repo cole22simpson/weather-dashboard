@@ -23,14 +23,12 @@
                             Search for a City:
                         </h2>
                     </div>
-                    <div class="form-container row">
-                        <input class="form-control" type="text" placeholder="Enter city here...">
-                    </div>
-                    <div class="search-button row">
-                        <button id="search" class="btn btn-primary" type="submit">
-                            Search
-                        </button>
-                    </div>
+                    <form id="city-form">
+                            <input id="city-input" class="form-control input-container row" type="text" placeholder="Enter city here...">
+                            <button id="search" class="btn btn-primary search-button row" type="submit">
+                                Search
+                            </button>
+                    </form>
                 </div>
                 <!--Insert the recents here-->
                 <div class="recents-container">
@@ -45,9 +43,9 @@
             <div class="content-container col-9">
                 <!--Recreate this later dynamically-->
                 <div class="top-container">
-                    <ul>
+                    <ul id="todays-group">
                         <li id="city" class="today">
-                            Atlanta (3/13/2022)
+                            <span class="icon"></span>
                         </li>
                         <li id="temp" class="today">
                             Temp: 74.01
@@ -70,7 +68,7 @@
                     </div>
                     <div class="d-flex justify-content-between gap-5">
                         <div id="day-one" class="forecast-boxes">
-                            <ul>
+                            <ul id="forecast-group">
                                 <li class="forecast-date">Date</li>
                                 <li>Icon</li>
                                 <li>Temp</li>
@@ -120,7 +118,7 @@
         </div>
     </main>
     
-
-<script src="./assets/js/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>
