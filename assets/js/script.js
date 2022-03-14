@@ -67,37 +67,6 @@ var getCoordinates = function(data) {
     });
 }
 
-// var getWeather = function(lon, lat, city) {
-
-//     var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=daily&appid=" + apiKey;
-
-//     fetch(apiUrl)
-//     .then(function(response) {
-//         if (response.ok) {
-//             console.log(response);
-//             response.json().then(function(data) {
-//                 console.log(data);
-
-//                 icon = data.current.weather[0];
-//                 icon.src = "http://openweathermap.org/img/wn/" + icon + ".png";
-
-//                 var cityNameEl = document.createElement("li");
-//                 cityNameEl.classList = "today";
-//                 cityNameEl.setAttribute("id", "city");
-//                 cityNameEl.textContent = city + " " + date + " " + data.current.weather[0].icon;
-//                 todaysEl.appendChild(cityNameEl)
-
-//                 displayWeather(data);
-//             });
-//         }
-//         else {
-//             alert('Error: ' + response.statusText);
-//         }
-//     })
-//     .catch(function(error) {
-//         alert('Unable to connect to OpenWeather');
-//     });
-// };
 
 var displayWeather = function(data, city) {
 
