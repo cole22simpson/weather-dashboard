@@ -2,3 +2,68 @@
     padding: 0;
     margin: 0;
 }
+
+header {
+    background-color: rgb(66, 153, 194);
+}
+
+h1 {
+    text-align: center;
+    padding: 10px;
+    font-weight: 700;
+    color: white;
+}
+
+ul {
+    list-style: none;
+}
+
+.directions-container {
+    margin-left: 15px;
+}
+
+.form-container {
+    margin: 10px auto;
+}
+
+.search-button {
+    margin: 10px auto;
+    padding-bottom: 10px;
+    border-bottom: solid 1px black;
+}
+
+.recents {
+    padding: 0;
+    margin: 0;
+}
+
+.directions {
+    font-size: 32px;
+    font-weight: 700;
+}
+
+#city {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+span {
+    background-color: green;
+}
+
+.forecast-boxes {
+    background-color: rgb(66, 153, 194);
+    padding: 5px 0;
+    line-height: 2.5;
+    width: 100%;
+}
+
+.forecast-date {
+    font-size: 24px;;
+}
+
+.top-container {
+    border: solid 1px black;
+    line-height: 3;
+}

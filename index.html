@@ -14,46 +14,108 @@
 </header>
 
 <body>
-    <main>
-        <div class="search-recents col-3">
-            <div class="search-container">
-                <div class="directions-container">
-                    <h2 class="directions row">
-                        Search for a City:
-                    </h2>
+    <main class="container-fluid">
+        <div class="row">
+            <div class="search-recents col-3">
+                <div class="search-container">
+                    <div class="directions-container">
+                        <h2 class="directions row">
+                            Search for a City:
+                        </h2>
+                    </div>
+                    <div class="form-container row">
+                        <input class="form-control" type="text" placeholder="Enter city here...">
+                    </div>
+                    <div class="search-button row">
+                        <button id="search" class="btn btn-primary" type="submit">
+                            Search
+                        </button>
+                    </div>
                 </div>
-                <div class="form-container row">
-                    <form>
-                        <input type="text" placeholder="Enter city here...">
-                    </form>
-                </div>
-                <div class="search-button row">
-                    <button class="btn btn-primary">
-                        Search
-                    </button>
+                <!--Insert the recents here-->
+                <div class="recents-container">
+                    <ul class="recents row">
+                        <li class="past-search btn btn-secondary">
+                            Placeholder City
+                        </li>
+                    </ul>
                 </div>
             </div>
 
-            <div class="recents-container">
-                <ul class="recents">
-                    <li class="btn btn-secondary row">
-                        Placeholder City
-                    </li>
-                </ul>
-            </div>
-        </div>
+            <div class="content-container col-9">
+                <!--Recreate this later dynamically-->
+                <div class="top-container">
+                    <ul>
+                        <li id="city" class="today">
+                            Atlanta (3/13/2022)
+                        </li>
+                        <li id="temp" class="today">
+                            Temp: 74.01
+                        </li> 
+                        <li id="wind" class="today">
+                            Wind: 6.67 MPH
+                        </li>
+                        <li id="humidity" class="today">
+                            Humidity: 46%;
+                        </li>
+                        <li id="uv" class="today">
+                            UV Index: <span class="btn btn-success">.47</span>
+                        </li>
+                    </ul>
+                </div>
 
-        <div class="content-container col-9">
-            <!--Recreate this later dynamically-->
-            <div class="top-container row">
-                <h2>
-                    Atlanta (3/30/2021)
-                </h2>
-                <ul>
-                    <li>
-                        Temp: 74.01
-                    </li> 
-                </ul>
+                <div class="forecast-container row">
+                    <div>
+                        <h4>5-Day Forecast</h4>
+                    </div>
+                    <div class="d-flex justify-content-between gap-5">
+                        <div id="day-one" class="forecast-boxes">
+                            <ul>
+                                <li class="forecast-date">Date</li>
+                                <li>Icon</li>
+                                <li>Temp</li>
+                                <li>Wind</li>
+                                <li>Humidity</li>
+                            </ul>
+                        </div>
+                        <div id="day-two" class="forecast-boxes">
+                            <ul>
+                                <li>Date</li>
+                                <li>Icon</li>
+                                <li>Temp</li>
+                                <li>Wind</li>
+                                <li>Humidity</li>
+                            </ul>
+                        </div>
+                        <div id="day-three" class="forecast-boxes">
+                            <ul>
+                                <li>Date</li>
+                                <li>Icon</li>
+                                <li>Temp</li>
+                                <li>Wind</li>
+                                <li>Humidity</li>
+                            </ul>
+                        </div>
+                        <div id="day-four" class="forecast-boxes">
+                            <ul>
+                                <li>Date</li>
+                                <li>Icon</li>
+                                <li>Temp</li>
+                                <li>Wind</li>
+                                <li>Humidity</li>
+                            </ul>
+                        </div>
+                        <div id="day-five" class="forecast-boxes">
+                            <ul>
+                                <li>Date</li>
+                                <li>Icon</li>
+                                <li>Temp</li>
+                                <li>Wind</li>
+                                <li>Humidity</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
