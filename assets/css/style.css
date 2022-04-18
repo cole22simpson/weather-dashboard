@@ -35,7 +35,11 @@ ul {
 
 .recents {
     padding: 5px 0;
-    margin: 0;
+    margin:  0;
+}
+
+.past-search {
+    margin: 5px 0;
 }
 
 .directions {
@@ -80,7 +84,8 @@ ul {
 }
 
 .forecast-date {
-    font-size: 24px;;
+    font-size: 24px;
+    font-weight: 500;
 }
 
 .top-container {

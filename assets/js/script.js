@@ -3,9 +3,11 @@ var cityInputEl = document.querySelector('#city-input');
 var formEl = document.querySelector('#city-form');
 var todaysEl = document.querySelector('#todays-group');
 var forecastEl = document.querySelector('.five-day');
+var recentsEl = document.querySelector('.recents');
 
+var recentSearches = [];
 
-var date = moment().format('(L)');
+var date = moment().format("(MM/DD/YYYY)");
 
 var formSubmitHandler = function(event) {
     event.preventDefault();
@@ -55,6 +57,7 @@ var getCoordinates = function(data) {
             console.log(response);
             response.json().then(function(data) {
                 console.log(data);
+                recentSearches.push(city);
                 displayWeather(data, city);
             });
         }
@@ -69,6 +72,7 @@ var getCoordinates = function(data) {
 
 
 var displayWeather = function(data, city) {
+
     todaysEl.innerHTML = "";
 
     var temp = data.current.temp;
@@ -127,25 +131,25 @@ var displayWeather = function(data, city) {
     }
     todaysEl.appendChild(todaysUvEl);
 
-    displayForecast(data);
+    displayForecast(data, city);
 };
 
-var displayForecast = function(data) {
+var displayForecast = function(data, city) {
+
+    createRecent(city);
         
     forecastEl.innerHTML = "";
     
     for (var i = 0; i < 5; i++) {
 
-        var forecastDate = moment().add([i] + 1, 'days').calendar();
-
-        forecastEl.innerHTML = "";
+        var forecastDate = moment().add(i + 1, 'days').format('MM/DD/YYYY');
 
         var id = i + 1;
 
         var forecastContainerEl = document.createElement("div");
         forecastContainerEl.classList = "forecast-boxes";
         forecastContainerEl.setAttribute("id", id);
-        forecastEl.appendChild(forecastContainerEl)
+        forecastEl.appendChild(forecastContainerEl);
         
         var ulEl = document.createElement("ul");
         ulEl.classList = "forecast-group";
@@ -154,34 +158,61 @@ var displayForecast = function(data) {
         var dateEl = document.createElement("li");
         dateEl.classList = "forecast-date";
         dateEl.textContent = (forecastDate);
-        ulEl.appendChild=(dateEl);
+        ulEl.appendChild(dateEl);
 
-        console.log(forecastDate);
+        var iconEl = document.createElement("img");
+        iconEl.setAttribute("src", "http://openweathermap.org/img/wn/" + data.daily[i].weather[0].icon + "@2x.png");
+        ulEl.appendChild(iconEl);
 
-        var iconEl = document.createElement("li");
+        var tempEl = document.createElement("li");
+        tempEl.textContent = "Temp: " + data.daily[i].temp.day;
+        ulEl.appendChild(tempEl);
+
+        var windEl = document.createElement("li");
+        windEl.textContent = "Wind: " + data.daily[i].wind_speed;
+        ulEl.appendChild(windEl);
+
+        var humidityEl = document.createElement("li");
+        humidityEl.textContent = "Humidity: " + data.daily[i].humidity;
+        ulEl.appendChild(humidityEl);
 
     }
 };
 
-/* <div id="day-one" class="forecast-boxes">
-<ul id="forecast-group">
-    <li class="forecast-date">Date</li>
-    <li>Icon</li>
-    <li>Temp</li>
-    <li>Wind</li>
-    <li>Humidity</li>
-</ul>
-</div> */
+var saveSearches = function() {
+    localStorage.setItem("recentSearches", JSON.stringify(recentSearches));
+};
 
+var loadSearches = function() {
+    var savedSearches = localStorage.getItem("recentSearches");
 
+    if (!savedSearches) {
+        return false;
+    }
+    console.log("Saved searches found!");
 
+    savedSearches = JSON.parse(savedSearches);
 
+    for (var i = 0; i < savedSearches.length; i++) {
+        var searchIndex = savedSearches[i];
+        loadRecents(searchIndex);
+    }
+};
 
+var loadRecents = function(searchIndex) {
+    var buttonEl = document.createElement("li");
+    buttonEl.classList = ("past-search btn btn-secondary");
+    buttonEl.textContent = (searchIndex);
+    recentsEl.appendChild(buttonEl);
+};
 
-
-
-
-
-
+var createRecent = function(city) {
+    var buttonEl = document.createElement("li");
+    buttonEl.classList = ("past-search btn btn-secondary");
+    buttonEl.textContent = (city);
+    recentsEl.appendChild(buttonEl);
+}
 
 formEl.addEventListener('submit', formSubmitHandler);
+
+loadSearches();
