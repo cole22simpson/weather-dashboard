@@ -73,6 +73,8 @@ var getCoordinates = function(data) {
 
 var displayWeather = function(data, city) {
 
+    saveSearches();
+
     todaysEl.innerHTML = "";
 
     var temp = data.current.temp;
