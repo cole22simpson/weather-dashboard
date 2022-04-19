@@ -5,6 +5,8 @@ var todaysEl = document.querySelector('#todays-group');
 var forecastEl = document.querySelector('.five-day');
 var recentsEl = document.querySelector('.recents');
 
+var searchIDCounter = 0;
+
 var recentSearches = [];
 
 var date = moment().format("(MM/DD/YYYY)");
@@ -57,7 +59,6 @@ var getCoordinates = function(data) {
             console.log(response);
             response.json().then(function(data) {
                 console.log(data);
-                recentSearches.push(city);
                 displayWeather(data, city);
             });
         }
@@ -72,8 +73,6 @@ var getCoordinates = function(data) {
 
 
 var displayWeather = function(data, city) {
-
-    saveSearches();
 
     todaysEl.innerHTML = "";
 
@@ -204,17 +203,40 @@ var loadSearches = function() {
 var loadRecents = function(searchIndex) {
     var buttonEl = document.createElement("li");
     buttonEl.classList = ("past-search btn btn-secondary");
+    buttonEl.setAttribute("id", searchIDCounter);
     buttonEl.textContent = (searchIndex);
     recentsEl.appendChild(buttonEl);
+
+    searchIDCounter++;
 };
 
 var createRecent = function(city) {
     var buttonEl = document.createElement("li");
     buttonEl.classList = ("past-search btn btn-secondary");
+    buttonEl.setAttribute("id", searchIDCounter);
     buttonEl.textContent = (city);
     recentsEl.appendChild(buttonEl);
-}
 
+    recentSearches.push(city);
+
+    saveSearches();
+
+    searchIDCounter++;
+};
+
+var recentClickHandler = function(event) {
+    
+    var targetEl = event.target;
+
+    if (targetEl.matches(".past-search")) {
+        console.log(targetEl);
+        var searchID = targetEl.getAttribute("id");
+        var recentSelected = document.querySelector(".past-search[id='" + searchID + "']").textContent;
+        fetchApi(recentSelected);
+    }
+};
+
+recentsEl.addEventListener('click', recentClickHandler);
 formEl.addEventListener('submit', formSubmitHandler);
 
 loadSearches();
