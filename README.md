@@ -8,4 +8,4 @@ This application will allow you to find the weather conditions of any city in th
 
 ## Link
 
-You can access the website ![here](https://cole22simpson.github.io/weather-dashboard/)
+You can access the website [here](https://cole22simpson.github.io/weather-dashboard/)
